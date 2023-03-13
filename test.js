@@ -1,37 +1,22 @@
-function partition(arr, low, high) {
-  let pivot = arr[low];
-  let i = low - 1;
-  let j = high + 1;
-
-  while (true) {
-    do {
-      i++;
-    } while (arr[i] < pivot);
-
-    do {
-      j--;
-    } while (arr[j] > pivot);
-
-    if (i >= j) {
-      return j;
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function (nums) {
+  let output = [];
+  let count = 0;
+  for (let i = 0; i < nums.length; i++) {
+    if (nums[i] != 0) {
+      output.push(nums[i]);
+    } else {
+      count++;
     }
-
-    [arr[i], arr[j]] = [arr[j], arr[i]];
   }
-}
-
-function quickSort(arr, low = 0, high = arr.length - 1) {
-  if (low < high) {
-    let p = partition(arr, low, high);
-    quickSort(arr, low, p);
-    quickSort(arr, p + 1, high);
+  while (count > 0) {
+    output.push(0);
+    count--;
   }
-  return arr;
-}
+  return output;
+};
 
-// Example usage:
-let arr = [3, 8, 2, 4, 1, 6, 7, 5];
-let p = partition(arr, 0, arr.length - 1);
-console.log(arr); // [1, 2, 3, 4, 8, 6, 7, 5]
-console.log(p); // 3
-console.log(quickSort(arr)); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(moveZeroes([0, 1, 0, 3, 12]));
