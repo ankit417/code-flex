@@ -12,3 +12,11 @@ describe("#insertAtHead", () => {
     expect(ll.length).toBe(2);
   });
 });
+
+describe("#getByIndex", () => {
+  describe("with index less than 0", () => {
+    test("it returns null", () => {
+      const ll = new LinkedList();
+    });
+  });
+});
